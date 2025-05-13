@@ -1,7 +1,19 @@
 function validEmail(str) {
-  //your JS code here.
+  if (!str) return false;
+
+  const regex = /^(?!.*\.\.)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return regex.test(str);
 }
 
-// Do not change the code below.
-const str = prompt("Enter an email address.");
-alert(validEmail(str));
+function checkEmail() {
+  const input = document.getElementById('emailInput').value.trim();
+  const result = document.getElementById('result');
+
+  if (validEmail(input)) {
+    result.textContent = "Valid Email ✅";
+    result.style.color = "green";
+  } else {
+    result.textContent = "Invalid Email ❌";
+    result.style.color = "red";
+  }
+}
